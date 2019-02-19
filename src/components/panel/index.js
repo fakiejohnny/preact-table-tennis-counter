@@ -10,16 +10,13 @@ export default class Panel extends Component {
 	increment = () => {
 		this.setState({ count: this.state.count+1 });
 		
-		if (this.state.count >= 11) {
-			this.setState({ winns: this.state.winns+1 });
+		if (this.state.count > 11) {
+			this.setState({
+				winns: this.state.winns+1,
+				count: 1
+			});
 		}
 	};
-
-	componentDidUpdate() {
-		if (this.state.count >= 11) {
-			this.state.count = 0;
-		}
-	}
 
 	render({ username }, { count, winns }) {
 		return (

@@ -3,11 +3,14 @@ import style from './style';
 
 import Panel from './../../components/panel';
 
-const Home = () => (
-	<div class={style.home}>
-		<Panel username="Conrad"/>
-		<Panel username="Paul"/>
-	</div>
-);
+export default class Home extends Component {
 
-export default Home;
+	render() {
+		return (
+            <div class={style.home}>
+                <Panel username="Conrad"/>
+                <Panel username="Paul"/>
+            </div>
+		);
+	}
+}
