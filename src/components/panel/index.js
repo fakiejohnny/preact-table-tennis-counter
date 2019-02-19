@@ -3,18 +3,30 @@ import style from './style';
 
 export default class Panel extends Component {
 	state = {
-		count: 0
+		count: 0,
+		winns: 0
 	};
 
 	increment = () => {
-        this.setState({ count: this.state.count+1 });
+		this.setState({ count: this.state.count+1 });
+		
+		if (this.state.count >= 11) {
+			this.setState({ winns: this.state.winns+1 });
+		}
 	};
 
-	render({ username }, { count }) {
+	componentDidUpdate() {
+		if (this.state.count >= 11) {
+			this.state.count = 0;
+		}
+	}
+
+	render({ username }, { count, winns }) {
 		return (
 			<div class={style.panel} onClick={this.increment}>
-				<p class={style.name}>{username}</p>
-				<p class={style.points}>{count}</p>
+				<p class={style.username}>{username}</p>
+				<p class={style.count}>{count}</p>
+				<p class={style.winns}>{winns}</p>
 			</div>
 		);
 	}
